@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/back1">
+
+    <TextView
+        android:id="@+id/text_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zaloguj się "
+        android:textSize="30sp"
+        android:gravity="center"
+         android:fontFamily="@font/roboto_regular"/>
+
+    <EditText
+        android:id="@+id/et_email_login"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="30dp"
+        android:hint="email"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_regular"/>
+
+    <EditText
+        android:id="@+id/edit_text_login_password"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_marginTop="30dp"
+        android:hint="hasło"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/text_login_do_not_have_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nie masz konta?"
+        android:textSize="15sp"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/btn_goToRegistration_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="załóż je "
+        style="?android:attr/borderlessButtonStyle"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="#000"/>
+
+    <Button
+        android:id="@+id/btn_goToAdvertisement_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="lub rozpocznij bez logowania"
+        style="?android:attr/borderlessButtonStyle"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="#000"/>
+
+</LinearLayout>
