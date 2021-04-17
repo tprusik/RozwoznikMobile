@@ -23,19 +23,19 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         android:layout_marginTop="30dp"
         android:hint="imię"
         android:gravity="center"
         android:fontFamily="@font/roboto_regular"/>
     <EditText
-        android:id="@+id/edit_sourname_registration"
+        android:id="@+id/edit_phoneNumber_registration"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="textPhonetic"
         android:layout_marginTop="30dp"
-        android:hint="email"
+        android:hint="numer telefonu"
         android:gravity="center"
         android:fontFamily="@font/roboto_regular"/>
     <EditText
@@ -68,5 +68,12 @@
         android:layout_marginTop="30dp"
         android:hint="powtórz hasło"
         android:gravity="center"/>
-
+    <Button
+        android:id="@+id/btn_confirmRegistration_registration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="załóż konto"
+        style="?android:attr/borderlessButtonStyle"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="#000"/>
 </LinearLayout>
