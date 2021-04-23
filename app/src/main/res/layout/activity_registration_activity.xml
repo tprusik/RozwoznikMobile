@@ -46,8 +46,7 @@
         android:inputType="textEmailAddress"
         android:layout_marginTop="30dp"
         android:hint="email"
-        android:gravity="center"
-        android:fontFamily="@font/roboto_regular"/>
+        android:gravity="center" />
 
     <EditText
         android:id="@+id/edit_password_registration"
@@ -74,6 +73,5 @@
         android:layout_height="wrap_content"
         android:text="załóż konto"
         style="?android:attr/borderlessButtonStyle"
-        android:fontFamily="@font/roboto_regular"
         android:textColor="#000"/>
 </LinearLayout>

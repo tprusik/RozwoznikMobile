@@ -15,6 +15,8 @@ public class User {
 
     private String password;
 
+    private long Id;
+
     public String getEmail() {
         return email;
     }
