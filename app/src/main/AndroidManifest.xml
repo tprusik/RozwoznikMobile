@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rozwoznikv2">
-        <activity android:name=".registration_activity"></activity>
+        <activity android:name=".AddAnnouncementActivity"></activity>
+        <activity android:name=".AllAnnouncementsActivity" />
+        <activity android:name=".registration_activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

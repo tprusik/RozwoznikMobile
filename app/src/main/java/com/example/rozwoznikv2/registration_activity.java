@@ -34,7 +34,7 @@ public class registration_activity extends AppCompatActivity {
          emailEt = (EditText) findViewById(R.id.edit_email_registration);
          passEt = (EditText) findViewById(R.id.edit_password_registration);
          confirmPassEt = (EditText) findViewById(R.id.edit_confirmPass_registration);
-         isValid=true;
+
 
         reffUser = FirebaseDatabase.getInstance().getReference().child("User");
         reffData = FirebaseDatabase.getInstance().getReference().child("UserData");
@@ -50,6 +50,7 @@ public class registration_activity extends AppCompatActivity {
         Button  confirmRegistrationBtn = (Button) findViewById(R.id.btn_confirmRegistration_registration);
        confirmRegistrationBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                isValid=true;
 
                 ValidateEmail(emailEt.getText().toString());
                 ValidatePassword(passEt.getText().toString());
@@ -70,7 +71,7 @@ public class registration_activity extends AppCompatActivity {
 
                     String email = user.getEmail().replace(".","_");
                     reffUser.child(email).setValue(user);
-                    Toast.makeText(registration_activity.this,"SUKCES dodany do bazy pora spać",Toast.LENGTH_LONG).show();
+                    Toast.makeText(registration_activity.this,"SUKCES ",Toast.LENGTH_LONG).show();
 
                 }
 
@@ -92,7 +93,7 @@ private void ValidateNullData(List<EditText> list){
             el.setError("Pole nie może być puste");
             isValid=false;
         }
-        else isValid=true;
+
 
     }
 
@@ -107,14 +108,13 @@ private void ValidatePassword(String password) {
             passEt.setError("Długość hasła powinna wynosić powyżej 8 znaków");
             isValid=false;
         }
-        else isValid=true;
+
 
     if (!digitCasePatten.matcher(password).find()) {
         passEt.requestFocus();
         passEt.setError("Hasło musi zawierać przynajmniej jedną cyfrę");
         isValid=false;
     }
-    else isValid=true;
 
 }
 
@@ -132,7 +132,7 @@ private void ValidateEmail(String email){
         emailEt.setError("Email nie jest zgodny ze wzorem");
         isValid=false;
     }
-    else isValid=true;
+
 
 }
 

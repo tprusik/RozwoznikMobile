@@ -1,9 +1,13 @@
 package com.example.rozwoznikv2.DAO;
 
+import java.util.UUID;
+
 public class User {
     private String email;
 
-    public User(){};
+    public User(){
+        setId();
+    };
 
     public void setEmail(String email) {
         this.email = email;
@@ -14,8 +18,11 @@ public class User {
     }
 
     private String password;
+    private String Id;
 
-    private long Id;
+    public String getId() { return Id; }
+
+    public void setId() { this.Id =   UUID.randomUUID().toString(); }
 
     public String getEmail() {
         return email;

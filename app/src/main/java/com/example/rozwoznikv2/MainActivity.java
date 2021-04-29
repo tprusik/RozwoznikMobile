@@ -3,12 +3,18 @@ package com.example.rozwoznikv2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.rozwoznikv2.DAO.User;
 import com.google.firebase.database.DataSnapshot;
@@ -22,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference reff;
     PasswordEncrypter encrypter = new PasswordEncrypter();
 
+boolean IsLogin = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("com.example.notatnikfinal", Context.MODE_PRIVATE);
 
 
         EditText emailEt = (EditText) findViewById(R.id.et_email_login);
@@ -49,12 +59,17 @@ public class MainActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         if(snapshot.exists()) {
-                            String email = snapshot.child("email").getValue().toString();
-                            String secret = snapshot.child("password").getValue().toString();
 
-                            if(checkEqualPassword(passEt.getText().toString(),secret))
-                            Toast.makeText(MainActivity.this, "email: " + email + " pomyślnie odebrano dane", Toast.LENGTH_LONG).show();
+                            User newUser = snapshot.getValue(User.class);
 
+                            if(checkEqualPassword(passEt.getText().toString(),user.getPassword())) {
+                                Toast.makeText(MainActivity.this, "email: " + user.getEmail() + " pomyślnie odebrano dane", Toast.LENGTH_LONG).show();
+                                IsLogin=true;
+
+                                prefs.edit().putBoolean("Islogin", IsLogin).commit();
+                                prefs.edit().putString("userID",newUser.getId()).commit();
+
+                            }
                             else
                                 Toast.makeText(MainActivity.this, "email lub hasło nieprawidłowe", Toast.LENGTH_LONG).show();
 
@@ -79,8 +94,46 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),registration_activity.class);
                 startActivity(intent); }
 
+        });
+
+
+        Button goToAddAnnouncement = (Button) findViewById(R.id.btn_goToAddAnnouncement_login);
+        goToAddAnnouncement.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(),AddAnnouncementActivity.class);
+                startActivity(intent); }
 
         });
+
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+       getMenuInflater().inflate(R.menu.menu_main_toolbar,menu);
+       return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if(id==R.id.shareToolbar)
+            Toast.makeText(MainActivity.this,"Przycisk Toolbar", Toast.LENGTH_LONG).show();
+
+        if(id==R.id.addAnnouncementToolbar){
+            Intent intent = new Intent(getApplicationContext(),AddAnnouncementActivity.class);
+            startActivity(intent);
+            Toast.makeText(MainActivity.this,"Sukces", Toast.LENGTH_LONG).show();
+    }
+
+        return true;
     }
 
     private boolean checkEqualPassword(String pass, String secret){

@@ -10,6 +10,11 @@
     android:gravity="center"
     android:background="@drawable/back1">
 
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
     <TextView
         android:id="@+id/text_login"
         android:layout_width="match_parent"
@@ -74,5 +79,27 @@
         style="?android:attr/borderlessButtonStyle"
         android:fontFamily="@font/roboto_regular"
         android:textColor="#000"/>
+    <Button
+        android:id="@+id/btn_goToAddAnnouncement_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dodaj ogloszenie Test"
+        style="?android:attr/borderlessButtonStyle"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="#000"/>
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_toolbar"
+        android:background="@color/cardview_dark_background"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="RozwoznikMobile"
+        app:titleMarginStart="40dp"
+        app:logo="@drawable/ic_main_logo_toolbar"
+        />
+
+
 
 </LinearLayout>

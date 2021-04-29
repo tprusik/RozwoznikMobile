@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context=".AddAnnouncementActivity">
+
+    <Spinner
+        android:id="@+id/spinnerAddAnnouncement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edit_title_addAnnouncement"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:hint="Tytuł Ogłoszenia"
+        android:inputType="textPhonetic" />
+
+
+    <EditText
+        android:id="@+id/edit_description_addAnnouncement"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:hint="Opis "
+        android:inputType="textPhonetic" />
+
+    <Button
+        android:id="@+id/addAnnouncementButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dodaj Ogloszenie" />
+
+
+</LinearLayout>
+

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Rozwoznikv2</string>
+
+    <string-array name="Kategoria">
+
+        <item>Art. Spożywcze</item>
+        <item>Motoryzacja</item>
+        <item>Dom i ogród</item>
+        <item>Elektronika</item>
+
+    </string-array>
+
 </resources>
