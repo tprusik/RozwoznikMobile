@@ -41,7 +41,7 @@ boolean IsLogin = true;
 
         EditText emailEt = (EditText) findViewById(R.id.et_email_login);
         EditText passEt = (EditText) findViewById(R.id.edit_text_login_password);
-        User user = new User();
+
         // reff = FirebaseDatabase.getInstance().getReference().child("User");
 
         Button goToLogin = (Button) findViewById(R.id.btn_goToLogin_login);
@@ -62,8 +62,8 @@ boolean IsLogin = true;
 
                             User newUser = snapshot.getValue(User.class);
 
-                            if(checkEqualPassword(passEt.getText().toString(),user.getPassword())) {
-                                Toast.makeText(MainActivity.this, "email: " + user.getEmail() + " pomyślnie odebrano dane", Toast.LENGTH_LONG).show();
+                            if(checkEqualPassword(passEt.getText().toString(),newUser.getPassword())) {
+                                Toast.makeText(MainActivity.this, "email: " + newUser.getEmail() + " pomyślnie odebrano dane " + newUser.getId(), Toast.LENGTH_LONG).show();
                                 IsLogin=true;
 
                                 prefs.edit().putBoolean("Islogin", IsLogin).commit();
@@ -107,10 +107,8 @@ boolean IsLogin = true;
         });
 
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-
 
     }
 

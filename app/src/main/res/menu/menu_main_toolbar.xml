@@ -4,28 +4,29 @@
 
     <item
         android:title="Share"
-        android:id="@+id/shareToolbar"></item>
+        android:id="@+id/shareToolbar"/>
 
     <item
         android:title="Login"
-        android:id="@+id/loginToolbar"></item>
+        android:id="@+id/loginToolbar"/>
 
     <item
         android:title="Wiadomości"
         android:id="@+id/messageToolbar"
         android:icon="@drawable/ic_chat"
-        app:showAsAction="always"></item>
+        app:showAsAction="always"
+        />
 
     <item
         android:title="DodajOgloszenie"
         android:id="@+id/addAnnouncementToolbar"
         android:icon="@drawable/ic_add_announcement"
-        app:showAsAction="always"></item>
+        app:showAsAction="always"/>
 
     <item
         android:title="Konto"
         android:id="@+id/accountToolbar"
         android:icon="@drawable/ic_account_info"
-        app:showAsAction="always"></item>
+        app:showAsAction="always"/>
 
 </menu>

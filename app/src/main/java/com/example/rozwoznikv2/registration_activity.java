@@ -23,6 +23,7 @@ public class registration_activity extends AppCompatActivity {
     EditText nameEt,phoneEt,emailEt,passEt,confirmPassEt;
     DatabaseReference reffUser ,reffData;
     PasswordEncrypter encrypter = new PasswordEncrypter();
+
     boolean isValid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class registration_activity extends AppCompatActivity {
                 ValidateEmail(emailEt.getText().toString());
                 ValidatePassword(passEt.getText().toString());
                 ValidateNullData(editTextLIist);
+                ValidatePhone(phoneEt.getText().toString());
 
                 if(isValid){
                     User user = new User();
@@ -63,14 +65,15 @@ public class registration_activity extends AppCompatActivity {
                     user.setEmail(emailEt.getText().toString());
                     user.setPassword(encrypter.Encrypt(passEt.getText().toString()));
 
+                    userData.setUserID(user.getId());
                     userData.setName(nameEt.getText().toString());
                     userData.setPhone(phoneEt.getText().toString());
 
-                    //reffUser.push().setValue(user);
-                   // reffData.push().setValue(userData);
 
                     String email = user.getEmail().replace(".","_");
                     reffUser.child(email).setValue(user);
+                    reffData.child(userData.getUserID()).setValue(userData);
+
                     Toast.makeText(registration_activity.this,"SUKCES ",Toast.LENGTH_LONG).show();
 
                 }
@@ -130,6 +133,21 @@ private void ValidateEmail(String email){
     if (!emailPattern.matcher(email).find()) {
         emailEt.requestFocus();
         emailEt.setError("Email nie jest zgodny ze wzorem");
+        isValid=false;
+    }
+
+
+}
+
+private void ValidatePhone(String phone){
+
+    String regex = "^[0-9]{9}$";
+
+    Pattern emailPattern = Pattern.compile(regex);
+
+    if (!emailPattern.matcher(phone).find()) {
+        phoneEt.requestFocus();
+        phoneEt.setError("Nr Telefonu nie jest zgodny ze wzorem");
         isValid=false;
     }
 

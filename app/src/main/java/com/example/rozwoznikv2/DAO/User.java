@@ -3,7 +3,10 @@ package com.example.rozwoznikv2.DAO;
 import java.util.UUID;
 
 public class User {
+
     private String email;
+    private String password;
+    private String id;
 
     public User(){
         setId();
@@ -17,12 +20,9 @@ public class User {
         this.password = password;
     }
 
-    private String password;
-    private String Id;
+    public String getId() { return id; }
 
-    public String getId() { return Id; }
-
-    public void setId() { this.Id =   UUID.randomUUID().toString(); }
+    public void setId() { id = UUID.randomUUID().toString(); }
 
     public String getEmail() {
         return email;

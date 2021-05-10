@@ -1,15 +1,23 @@
 package com.example.rozwoznikv2.DAO;
 
+import java.util.UUID;
+
 public class UserData {
 
-    private long Id;
+    private String userID;
+    private String Id;
     private String name;
     private String phone;
 
 public UserData(){
-
+    setID();
 }
-    public long getID() {
+
+    public void setUserID(String userID) { this.userID = userID; }
+
+    public String getUserID() { return userID; }
+
+    public String getID() {
         return Id;
     }
 
@@ -21,17 +29,13 @@ public UserData(){
         return phone;
     }
 
-    private void setID() {
-        Id = System.currentTimeMillis();
-    }
+    public void setID() { Id = UUID.randomUUID().toString();}
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    public void setPhone(String phone) { this.phone = phone; }
 
 
 }
