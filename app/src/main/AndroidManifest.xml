@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rozwoznikv2">
-        <activity android:name=".AccountInfoActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".AccountInfoActivity" />
         <activity android:name=".AddAnnouncementActivity" />
         <activity android:name=".AllAnnouncementsActivity" />
         <activity android:name=".registration_activity" />

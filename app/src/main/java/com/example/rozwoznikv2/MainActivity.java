@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
 boolean IsLogin = true;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +37,8 @@ boolean IsLogin = true;
 
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("com.example.notatnikfinal", Context.MODE_PRIVATE);
 
-
         EditText emailEt = (EditText) findViewById(R.id.et_email_login);
         EditText passEt = (EditText) findViewById(R.id.edit_text_login_password);
-
-        // reff = FirebaseDatabase.getInstance().getReference().child("User");
 
         Button goToLogin = (Button) findViewById(R.id.btn_goToLogin_login);
 
@@ -50,9 +46,7 @@ boolean IsLogin = true;
         goToLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
                 reff = FirebaseDatabase.getInstance().getReference().child("User").child(emailEt.getText().toString().replace(".","_"));
-
 
                 reff.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -68,6 +62,7 @@ boolean IsLogin = true;
 
                                 prefs.edit().putBoolean("Islogin", IsLogin).commit();
                                 prefs.edit().putString("userID",newUser.getId()).commit();
+                                prefs.edit().putString("email",newUser.getEmail()).commit();
 
                             }
                             else
@@ -130,6 +125,11 @@ boolean IsLogin = true;
             startActivity(intent);
             Toast.makeText(MainActivity.this,"Sukces", Toast.LENGTH_LONG).show();
     }
+
+        if(id==R.id.accountToolbar){
+            Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+            startActivity(intent);
+        }
 
         return true;
     }
