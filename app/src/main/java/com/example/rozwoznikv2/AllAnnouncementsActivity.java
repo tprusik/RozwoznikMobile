@@ -25,14 +25,13 @@ public class AllAnnouncementsActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         };
+        
         reff.addValueEventListener(postListener);
 
 

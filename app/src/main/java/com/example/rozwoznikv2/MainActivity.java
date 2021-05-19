@@ -42,7 +42,6 @@ boolean IsLogin = true;
 
         Button goToLogin = (Button) findViewById(R.id.btn_goToLogin_login);
 
-
         goToLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -101,10 +100,8 @@ boolean IsLogin = true;
 
         });
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-
     }
 
     @Override
@@ -128,6 +125,11 @@ boolean IsLogin = true;
 
         if(id==R.id.accountToolbar){
             Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+            startActivity(intent);
+        }
+
+        if(id==R.id.messageToolbar){
+            Intent intent = new Intent(getApplicationContext(),EmergencyCallsActivity.class);
             startActivity(intent);
         }
 

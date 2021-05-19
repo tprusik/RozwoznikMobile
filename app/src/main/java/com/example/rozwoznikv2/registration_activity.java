@@ -36,7 +36,6 @@ public class registration_activity extends AppCompatActivity {
          passEt = (EditText) findViewById(R.id.edit_password_registration);
          confirmPassEt = (EditText) findViewById(R.id.edit_confirmPass_registration);
 
-
         reffUser = FirebaseDatabase.getInstance().getReference().child("User");
         reffData = FirebaseDatabase.getInstance().getReference().child("UserData");
 

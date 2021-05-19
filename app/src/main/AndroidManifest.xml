@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rozwoznikv2">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rozwoznikv2">
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".EmergencyCallsActivity"></activity>
+        <activity android:name=".MessageActivity" />
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".AccountInfoActivity" />
         <activity android:name=".AddAnnouncementActivity" />
         <activity android:name=".AllAnnouncementsActivity" />

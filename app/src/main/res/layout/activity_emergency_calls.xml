@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EmergencyCallsActivity">
+
+    <TextView
+        android:id="@+id/textViewEmergencyCalls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Połączenia Alarmowe" />
+
+    <Button
+        android:id="@+id/btnMedical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pogotowie Ratunkowe" />
+
+    <Button
+        android:id="@+id/btnPolice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Policja" />
+
+    <Button
+        android:id="@+id/btnFireBrigade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Straż Pożarna" />
+</LinearLayout>
