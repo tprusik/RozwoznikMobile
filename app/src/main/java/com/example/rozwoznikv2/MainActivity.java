@@ -129,7 +129,7 @@ boolean IsLogin = true;
         }
 
         if(id==R.id.messageToolbar){
-            Intent intent = new Intent(getApplicationContext(),EmergencyCallsActivity.class);
+            Intent intent = new Intent(getApplicationContext(),MapsActivity.class);
             startActivity(intent);
         }
 
