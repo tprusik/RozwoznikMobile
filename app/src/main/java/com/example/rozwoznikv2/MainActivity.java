@@ -129,7 +129,7 @@ boolean IsLogin = true;
         }
 
         if(id==R.id.messageToolbar){
-            Intent intent = new Intent(getApplicationContext(),MapsActivity.class);
+            Intent intent = new Intent(getApplicationContext(),CameraActivity.class);
             startActivity(intent);
         }
 

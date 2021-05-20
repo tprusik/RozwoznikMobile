@@ -10,5 +10,6 @@
 
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string name="covid_hyperlink">Odwiedź najnowsze informacje dotyczące koronawirusa ! <a href="https://www.gov.pl/web/koronawirus/wykaz-zarazen-koronawirusem-sars-cov-2"> COVID </a></string>
 
 </resources>
