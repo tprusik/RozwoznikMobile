@@ -44,6 +44,18 @@
         android:layout_height="wrap_content"
         android:text="Dodaj Ogloszenie" />
 
+    <ImageView
+        android:id="@+id/imageViewAnnouncementPhtoto"
+        android:layout_width="match_parent"
+        android:layout_height="197dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/addAnnouncementPhotoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dodaj Zdjecie" />
+
 
 </LinearLayout>
 
