@@ -7,10 +7,10 @@
     android:orientation="vertical"
     tools:context=".AllAnnouncementsActivity">
 
+
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="595dp" />
-
-
+        android:layout_height="match_parent"
+        android:id="@+id/listViewAllAnouncements" />
 
 </LinearLayout>
