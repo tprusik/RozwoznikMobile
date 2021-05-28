@@ -83,7 +83,7 @@ public class AllAnnouncementsActivity extends AppCompatActivity {
 
                 String userID = Ids.get(position);
 
-                Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+                Intent intent = new Intent(getApplicationContext(),AnnoouncementActivity.class);
                 intent.putExtra("userID",userID);
                 startActivity(intent);
 
