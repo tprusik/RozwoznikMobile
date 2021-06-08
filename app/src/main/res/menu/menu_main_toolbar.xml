@@ -6,16 +6,17 @@
         android:title="Share"
         android:id="@+id/shareToolbar"/>
 
-    <item
-        android:title="Login"
-        android:id="@+id/loginToolbar"/>
 
     <item
-        android:title="Wiadomości"
-        android:id="@+id/messageToolbar"
-        android:icon="@drawable/ic_chat"
-        app:showAsAction="always"
+        android:title="Login"
+        android:id="@+id/loginToolbar"
         />
+
+    <item
+        android:title="Alarm"
+        android:id="@+id/alarmToolbar"
+        android:icon="@drawable/ic_baseline_local_hospital_24"
+        app:showAsAction="always" />
 
     <item
         android:title="DodajOgloszenie"

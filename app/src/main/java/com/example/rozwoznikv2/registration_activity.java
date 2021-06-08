@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 public class registration_activity extends AppCompatActivity {
 
-    EditText nameEt,phoneEt,emailEt,passEt,confirmPassEt;
+    EditText nameEt,phoneEt,emailEt,passEt,confirmPassEt , cityEt, streetEt;
     DatabaseReference reffUser ,reffData;
     PasswordEncrypter encrypter = new PasswordEncrypter();
 
@@ -35,6 +35,8 @@ public class registration_activity extends AppCompatActivity {
          emailEt = (EditText) findViewById(R.id.edit_email_registration);
          passEt = (EditText) findViewById(R.id.edit_password_registration);
          confirmPassEt = (EditText) findViewById(R.id.edit_confirmPass_registration);
+         cityEt = (EditText) findViewById(R.id.edit_city_registration);
+         streetEt = (EditText) findViewById(R.id.edit_street_registration);
 
         reffUser = FirebaseDatabase.getInstance().getReference().child("User");
         reffData = FirebaseDatabase.getInstance().getReference().child("UserData");
@@ -67,6 +69,8 @@ public class registration_activity extends AppCompatActivity {
                     userData.setUserID(user.getId());
                     userData.setName(nameEt.getText().toString());
                     userData.setPhone(phoneEt.getText().toString());
+                    userData.setCity(cityEt.getText().toString());
+                    userData.setStreet(streetEt.getText().toString());
 
 
                     String email = user.getEmail().replace(".","_");

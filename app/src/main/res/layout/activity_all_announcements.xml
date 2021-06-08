@@ -9,8 +9,20 @@
 
 
     <ListView
+        android:id="@+id/listViewAllAnouncements"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listViewAllAnouncements" />
+        android:layout_height="565dp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_toolbar"
+        android:background="@color/cardview_dark_background"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="Rozwoznik"
+        app:titleMarginStart="30dp"
+        app:logo="@drawable/ic_logo_rozwoznik"
+
+        />
 
 </LinearLayout>

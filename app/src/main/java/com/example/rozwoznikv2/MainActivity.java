@@ -63,6 +63,9 @@ boolean IsLogin = true;
                                 prefs.edit().putString("userID",newUser.getId()).commit();
                                 prefs.edit().putString("email",newUser.getEmail()).commit();
 
+                                Intent intent = new Intent(getApplicationContext(),AllAnnouncementsActivity.class);
+                                startActivity(intent);
+
                             }
                             else
                                 Toast.makeText(MainActivity.this, "email lub hasło nieprawidłowe", Toast.LENGTH_LONG).show();
@@ -120,7 +123,6 @@ boolean IsLogin = true;
         if(id==R.id.addAnnouncementToolbar){
             Intent intent = new Intent(getApplicationContext(),AddAnnouncementActivity.class);
             startActivity(intent);
-            Toast.makeText(MainActivity.this,"Sukces", Toast.LENGTH_LONG).show();
     }
 
         if(id==R.id.accountToolbar){
@@ -128,8 +130,8 @@ boolean IsLogin = true;
             startActivity(intent);
         }
 
-        if(id==R.id.messageToolbar){
-            Intent intent = new Intent(getApplicationContext(),AllAnnouncementsActivity.class);
+        if(id==R.id.alarmToolbar){
+            Intent intent = new Intent(getApplicationContext(),EmergencyCallsActivity.class);
             startActivity(intent);
         }
 

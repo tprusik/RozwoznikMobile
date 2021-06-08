@@ -20,7 +20,6 @@ public class EmergencyCallsActivity extends AppCompatActivity {
 
 
 
-
         Button medicalbutton = (Button) findViewById(R.id.btnMedical);
         medicalbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

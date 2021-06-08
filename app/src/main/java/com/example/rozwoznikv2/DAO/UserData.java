@@ -8,6 +8,8 @@ public class UserData {
     private String Id;
     private String name;
     private String phone;
+    private String city;
+    private String street;
 
 public UserData(){
     setID();
@@ -38,4 +40,19 @@ public UserData(){
     public void setPhone(String phone) { this.phone = phone; }
 
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
 }

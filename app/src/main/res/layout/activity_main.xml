@@ -89,16 +89,6 @@
         android:textColor="#000"/>
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/main_toolbar"
-        android:background="@color/cardview_dark_background"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:title="RozwoznikMobile"
-        app:titleMarginStart="40dp"
-        app:logo="@drawable/ic_main_logo_toolbar"
-        />
 
 
 

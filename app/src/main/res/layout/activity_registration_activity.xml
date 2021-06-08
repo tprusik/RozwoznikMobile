@@ -39,6 +39,28 @@
         android:gravity="center"
         android:fontFamily="@font/roboto_regular"/>
     <EditText
+        android:id="@+id/edit_city_registration"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPhonetic"
+        android:layout_marginTop="30dp"
+        android:hint="Miasto"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_regular"/>
+
+    <EditText
+        android:id="@+id/edit_street_registration"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPhonetic"
+        android:layout_marginTop="30dp"
+        android:hint="Ulica"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_regular"/>
+
+    <EditText
         android:id="@+id/edit_email_registration"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -71,7 +93,7 @@
         android:id="@+id/btn_confirmRegistration_registration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="załóż konto"
+        android:text=" PRZEJDŹ DALEJ"
         style="?android:attr/borderlessButtonStyle"
         android:textColor="#000"/>
 </LinearLayout>

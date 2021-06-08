@@ -31,7 +31,6 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("com.example.notatnikfinal", Context.MODE_PRIVATE);
         String email = prefs.getString("email","def");
         String userID = prefs.getString("userID","def");
@@ -56,10 +55,8 @@ public class ProfileActivity extends AppCompatActivity {
 
                     nameEt.setText(userData.getName());
                     phoneEt.setText(userData.getPhone());
-
                 }
-
-                }
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -75,7 +72,6 @@ public class ProfileActivity extends AppCompatActivity {
                     Address address = snapshot.getValue(Address.class);
 
                 }
-
                 else
                 {
 
@@ -88,7 +84,6 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
-
 
 
         emailEt.setText(userID);
