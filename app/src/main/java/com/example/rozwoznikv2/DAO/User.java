@@ -2,10 +2,24 @@ package com.example.rozwoznikv2.DAO;
 
 import java.util.UUID;
 
+/**
+ * Model użytkownika
+ */
 public class User {
 
+    /**
+     * Pole email
+     */
     private String email;
+
+    /**
+     * Pole hasło
+     */
     private String password;
+
+    /**
+     * Pole id
+     */
     private String id;
 
     public User(){

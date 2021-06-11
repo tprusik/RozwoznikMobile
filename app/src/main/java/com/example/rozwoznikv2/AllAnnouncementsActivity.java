@@ -109,13 +109,11 @@ public class AllAnnouncementsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if(id==R.id.shareToolbar)
-           // Toast.makeText(MainActivity.this,"Przycisk Toolbar", Toast.LENGTH_LONG).show();
 
         if(id==R.id.addAnnouncementToolbar){
+
             Intent intent = new Intent(getApplicationContext(),AddAnnouncementActivity.class);
             startActivity(intent);
-             Toast.makeText(AllAnnouncementsActivity.this,"Przycisk Toolbar", Toast.LENGTH_LONG).show();
 
         }
 

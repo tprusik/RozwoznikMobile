@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,7 +48,17 @@ public class AnnoouncementActivity extends AppCompatActivity {
         TextView phone = (TextView) findViewById(R.id.textViewAnnouncementUserss);
         ImageView  image = (ImageView) findViewById(R.id.imageViewAnnouncementShow);
 
+        Button mapsButton = (Button) findViewById(R.id.buttonAnnouncementMap);
 
+        mapsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(),MapsActivity.class);
+                intent.putExtra("location", "wrocław");
+                startActivity(intent);
+
+        }
+        });
 
         userData = FirebaseDatabase.getInstance().getReference().child("UserData").child(userID);
 

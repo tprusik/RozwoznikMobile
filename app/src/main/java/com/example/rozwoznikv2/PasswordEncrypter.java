@@ -3,8 +3,16 @@ package com.example.rozwoznikv2;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Klasa realizująca szyfrowanie hasła usera.
+ */
 public class PasswordEncrypter {
 
+    /**
+     * Główna funkcja klasy realizująca szyfrowanie hasła usera.
+     * @param _password
+     * @return
+     */
     public String Encrypt(String _password) {
         String passwordToHash = _password;
         String generatedPassword = null;

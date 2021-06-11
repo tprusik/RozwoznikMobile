@@ -18,25 +18,42 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+/**
+ * Aktywność umożliwiająca rejestrację nowego użytkownika
+ */
 public class registration_activity extends AppCompatActivity {
 
-    EditText nameEt,phoneEt,emailEt,passEt,confirmPassEt , cityEt, streetEt;
-    DatabaseReference reffUser ,reffData;
+    /**
+     * Pola edycji umożliwiające wprowadzenie : imienia , emaila, hasła, miasta , oraz ulicy użytkownika.
+     */
+    EditText nameEt, phoneEt, emailEt, passEt, confirmPassEt, cityEt, streetEt;
+    /**
+     * Referencje do Google Firebase Database
+     */
+    DatabaseReference reffUser, reffData;
+
+    /**
+     * Klasa umożliwiająca szyfrowanie haseł usera.
+     */
     PasswordEncrypter encrypter = new PasswordEncrypter();
 
+    /**
+     * flaga walidacji pól usera
+     */
     boolean isValid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_activity);
 
-         nameEt = (EditText) findViewById(R.id.edit_name_registration);
-         phoneEt = (EditText) findViewById(R.id.edit_phoneNumber_registration);
-         emailEt = (EditText) findViewById(R.id.edit_email_registration);
-         passEt = (EditText) findViewById(R.id.edit_password_registration);
-         confirmPassEt = (EditText) findViewById(R.id.edit_confirmPass_registration);
-         cityEt = (EditText) findViewById(R.id.edit_city_registration);
-         streetEt = (EditText) findViewById(R.id.edit_street_registration);
+        nameEt = (EditText) findViewById(R.id.edit_name_registration);
+        phoneEt = (EditText) findViewById(R.id.edit_phoneNumber_registration);
+        emailEt = (EditText) findViewById(R.id.edit_email_registration);
+        passEt = (EditText) findViewById(R.id.edit_password_registration);
+        confirmPassEt = (EditText) findViewById(R.id.edit_confirmPass_registration);
+        cityEt = (EditText) findViewById(R.id.edit_city_registration);
+        streetEt = (EditText) findViewById(R.id.edit_street_registration);
 
         reffUser = FirebaseDatabase.getInstance().getReference().child("User");
         reffData = FirebaseDatabase.getInstance().getReference().child("UserData");
@@ -47,21 +64,23 @@ public class registration_activity extends AppCompatActivity {
         editTextLIist.add(emailEt);
         editTextLIist.add(passEt);
         editTextLIist.add(confirmPassEt);
-        
 
-        Button  confirmRegistrationBtn = (Button) findViewById(R.id.btn_confirmRegistration_registration);
-       confirmRegistrationBtn.setOnClickListener(new View.OnClickListener() {
+/**
+ * Przycisk zatwierdzenia rejestracji.
+ */
+        Button confirmRegistrationBtn = (Button) findViewById(R.id.btn_confirmRegistration_registration);
+        confirmRegistrationBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                isValid=true;
+                isValid = true;
 
                 ValidateEmail(emailEt.getText().toString());
                 ValidatePassword(passEt.getText().toString());
                 ValidateNullData(editTextLIist);
                 ValidatePhone(phoneEt.getText().toString());
 
-                if(isValid){
+                if (isValid) {
                     User user = new User();
-                    UserData userData =  new UserData();
+                    UserData userData = new UserData();
 
                     user.setEmail(emailEt.getText().toString());
                     user.setPassword(encrypter.Encrypt(passEt.getText().toString()));
@@ -73,90 +92,103 @@ public class registration_activity extends AppCompatActivity {
                     userData.setStreet(streetEt.getText().toString());
 
 
-                    String email = user.getEmail().replace(".","_");
+                    String email = user.getEmail().replace(".", "_");
                     reffUser.child(email).setValue(user);
                     reffData.child(userData.getUserID()).setValue(userData);
 
-                    Toast.makeText(registration_activity.this,"SUKCES ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(registration_activity.this, "SUKCES ", Toast.LENGTH_LONG).show();
 
                 }
 
 
             }
 
-    });
-}
+        });
+    }
+
+    /**
+     * Funkcja posiadająca listę wszelkich pól i sprawdzająca czy nie są one puste.
+     * @param list
+     */
+    private void ValidateNullData(List<EditText> list) {
+
+        for (EditText el : list
+        ) {
+            final String elString = el.getText().toString();
+            if (elString.length() == 0) {
+                el.requestFocus();
+                el.setError("Pole nie może być puste");
+                isValid = false;
+            }
 
 
-private void ValidateNullData(List<EditText> list){
-
-    for (EditText el:list
-    ) {
-        final String elString = el.getText().toString();
-        if(elString.length()==0)
-        {
-            el.requestFocus();
-            el.setError("Pole nie może być puste");
-            isValid=false;
         }
-
 
     }
 
-}
+    /**
+     * Funkcja realizująca walidację hasła co do ilości znaków, oraz zawierania przynajmiej jednej cyfry.
+     * @param password
+     */
+    private void ValidatePassword(String password) {
 
-private void ValidatePassword(String password) {
+        Pattern digitCasePatten = Pattern.compile("[0-9 ]");
 
-    Pattern digitCasePatten = Pattern.compile("[0-9 ]");
-
-        if(password.length()<9){
+        if (password.length() < 9) {
             passEt.requestFocus();
             passEt.setError("Długość hasła powinna wynosić powyżej 8 znaków");
-            isValid=false;
+            isValid = false;
         }
 
 
-    if (!digitCasePatten.matcher(password).find()) {
-        passEt.requestFocus();
-        passEt.setError("Hasło musi zawierać przynajmniej jedną cyfrę");
-        isValid=false;
+        if (!digitCasePatten.matcher(password).find()) {
+            passEt.requestFocus();
+            passEt.setError("Hasło musi zawierać przynajmniej jedną cyfrę");
+            isValid = false;
+        }
+
     }
 
-}
+    /**
+     * Funkcja realizująca walidację maila według podanego wzoru.
+     * @param email
+     */
+    private void ValidateEmail(String email) {
 
-private void ValidateEmail(String email){
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
 
-    String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-            "[a-zA-Z0-9_+&*-]+)*@" +
-            "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-            "A-Z]{2,7}$";
+        Pattern emailPattern = Pattern.compile(emailRegex);
 
-    Pattern emailPattern = Pattern.compile(emailRegex);
+        if (!emailPattern.matcher(email).find()) {
+            emailEt.requestFocus();
+            emailEt.setError("Email nie jest zgodny ze wzorem");
+            isValid = false;
+        }
 
-    if (!emailPattern.matcher(email).find()) {
-        emailEt.requestFocus();
-        emailEt.setError("Email nie jest zgodny ze wzorem");
-        isValid=false;
+
     }
 
+    /**
+     * Funkcja realizująca walidację numeru telefonu według podanego wzoru.
+     * @param phone
+     */
+    private void ValidatePhone(String phone) {
 
-}
+        String regex = "^[0-9]{9}$";
 
-private void ValidatePhone(String phone){
+        Pattern emailPattern = Pattern.compile(regex);
 
-    String regex = "^[0-9]{9}$";
+        if (!emailPattern.matcher(phone).find()) {
+            phoneEt.requestFocus();
+            phoneEt.setError("Nr Telefonu nie jest zgodny ze wzorem");
+            isValid = false;
+        }
 
-    Pattern emailPattern = Pattern.compile(regex);
 
-    if (!emailPattern.matcher(phone).find()) {
-        phoneEt.requestFocus();
-        phoneEt.setError("Nr Telefonu nie jest zgodny ze wzorem");
-        isValid=false;
     }
-
-
-}
-
 
 
 }

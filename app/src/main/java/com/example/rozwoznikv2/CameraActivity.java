@@ -16,10 +16,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+/**
+ * Aktywność umożliwiająca wykonywanie zdjęć produktom
+ */
 public class CameraActivity extends AppCompatActivity {
 
-    Button cameraButton ;
+    /**
+     * Przycisk przekierowyjący do aparatu.
+     */
+
+    Button cameraButton;
+
+    /**
+     * ImageView z wykonanym zdjęciem.
+     */
     ImageView imageViewCamera;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +54,9 @@ public class CameraActivity extends AppCompatActivity {
         cameraButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                /**
+                 * Intencja przekierowująca do okna aparatu
+                 */
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
                 startActivityForResult(intent,100);
@@ -51,6 +67,13 @@ public class CameraActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     * Funkcja która umożliwia wklejenie zwróconego z aparatu zdjęcia do ImagreView
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

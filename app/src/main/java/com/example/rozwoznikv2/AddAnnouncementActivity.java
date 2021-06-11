@@ -45,7 +45,7 @@ import java.io.IOException;
 
 public class AddAnnouncementActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    DatabaseReference reff;
+    private DatabaseReference reff;
     public FirebaseStorage storage;
     public StorageReference storageReference;
     String title,description,category;
@@ -58,6 +58,7 @@ public class AddAnnouncementActivity extends AppCompatActivity implements Adapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_announcement);
 
+        askPermission();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
@@ -78,9 +79,9 @@ public class AddAnnouncementActivity extends AppCompatActivity implements Adapte
         Announcement announcement = new Announcement();
         reff = FirebaseDatabase.getInstance().getReference().child("Announcement");
 
-        askPermission();
+
         Button addAnnouncement = (Button) findViewById(R.id.addAnnouncementButton);
-       addAnnouncement .setOnClickListener(new View.OnClickListener() {
+       addAnnouncement.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                  title = titleEt.getText().toString();
@@ -91,14 +92,14 @@ public class AddAnnouncementActivity extends AppCompatActivity implements Adapte
                  announcement.setDescription(description);
                  announcement.setUserID(userID);
                  reff.push().setValue(announcement);
-
+                uploadImage();
                 Toast.makeText(AddAnnouncementActivity.this,"SUKCES ",Toast.LENGTH_LONG).show();
 
             }
         });
 
 
-        addAnnouncement .setOnClickListener(new View.OnClickListener() {
+        addAnnouncement.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 title = titleEt.getText().toString();
@@ -110,7 +111,7 @@ public class AddAnnouncementActivity extends AppCompatActivity implements Adapte
                 announcement.setUserID(userID);
                 reff.push().setValue(announcement);
 
-                uploadImage();
+               uploadImage();
 
                 Toast.makeText(AddAnnouncementActivity.this,"SUKCES ",Toast.LENGTH_LONG).show();
 
@@ -121,7 +122,8 @@ public class AddAnnouncementActivity extends AppCompatActivity implements Adapte
 
 
         imageViewCamera =(ImageView) findViewById(R.id.imageViewAnnouncementPhtoto) ;
-         cameraButton = (Button) findViewById(R.id.addAnnouncementPhotoButton);
+
+        cameraButton = (Button) findViewById(R.id.addAnnouncementPhotoButton);
 
         if (ContextCompat.checkSelfPermission(AddAnnouncementActivity.this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){
@@ -135,8 +137,8 @@ public class AddAnnouncementActivity extends AppCompatActivity implements Adapte
         cameraButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-              //  Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-               // startActivityForResult(intent,100);
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,100);
 
             }
         });
@@ -144,25 +146,26 @@ public class AddAnnouncementActivity extends AppCompatActivity implements Adapte
     }
 
     private void setView() {
+        cameraButton = (Button) findViewById(R.id.addAnnouncementPhotoButton);
        cameraButton.setOnClickListener(v -> {
-            String fileName = "new-photo-name.jpg";
+            String fileName = "new-photo.jpg";
             // Create parameters for Intent with filename
             ContentValues values = new ContentValues();
             values.put(MediaStore.Images.Media.TITLE, fileName);
-            values.put(MediaStore.Images.Media.DESCRIPTION, "Image capture by camera");
+           values.put(MediaStore.Images.Media.DESCRIPTION, "Image capture by camera");
             imageUri =
                     getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                             values);
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-            startActivityForResult(intent, 1231);
+           startActivityForResult(intent, 1231);
         });
     }
 
 
     private void uploadImage(){
 
-        StorageReference mountainsRef = storageReference.child("image/ss.jpg");
+        StorageReference mountainsRef = storageReference.child("image/ss1.jpg");
         mountainsRef.putFile(imageUri);
 
     }
@@ -171,13 +174,13 @@ public class AddAnnouncementActivity extends AppCompatActivity implements Adapte
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-       /* if(requestCode==100){
+       // if(requestCode==100){
 
-            Bitmap captureData = (Bitmap) data.getExtras().get("data");
-            imageViewCamera.setImageBitmap(captureData);
-            imageUri = data.getData();*/
+       //    Bitmap captureData = (Bitmap) data.getExtras().get("data");
+        //   imageViewCamera.setImageBitmap(captureData);
+        //   imageUri = data.getData();
 
-        //}
+      //  }
 
 
         super.onActivityResult(requestCode, resultCode, data);
@@ -230,7 +233,9 @@ public class AddAnnouncementActivity extends AppCompatActivity implements Adapte
         } else {
             // If permissions are granted we proceed by setting an OnClickListener for the button
             // which helps the user pick the image
-            setView();
+            Toast.makeText(AddAnnouncementActivity.this,"SUKCES ",Toast.LENGTH_LONG).show();
+
+           setView();
         }
     }
 

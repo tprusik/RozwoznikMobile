@@ -18,9 +18,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Aktywność pokazująca obecne dane usera. i umożliwiająca edytowanie ich.
+ */
 public class ProfileActivity extends AppCompatActivity {
 
+    /**
+     * Pola obecnych danych użytkownika : imienia , emaila,  miasta , oraz ulicy użytkownika.
+     */
     EditText nameEt,phoneEt,emailEt,addressEt;
+    /**
+     * Referencje do Google Firebase Database
+     */
     DatabaseReference reffData, reffAddress;
 
     String name = "test",phone="test",address;

@@ -2,12 +2,31 @@ package com.example.rozwoznikv2.DAO;
 
 import java.util.UUID;
 
+/**
+ * Model ogłoszenia
+ */
 public class Announcement {
 
+    /**
+     * Pole ID
+     */
     private String ID;
+    /**
+     * Pole id do danych konta usera.
+     */
     private String userID;
+    /**
+     * Pole tytuł
+     */
     private String title;
+
+    /**
+     * Pole kategoria
+     */
     private String category;
+    /**
+     * Pole opis ogłoszenia
+     */
     private String description;
 
     

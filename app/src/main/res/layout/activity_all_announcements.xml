@@ -11,7 +11,8 @@
     <ListView
         android:id="@+id/listViewAllAnouncements"
         android:layout_width="match_parent"
-        android:layout_height="565dp" />
+        android:layout_height="565dp"
+        />
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"

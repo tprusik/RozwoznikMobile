@@ -25,9 +25,18 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Referencja do database firebase.
+     */
     DatabaseReference reff;
+    /**
+     * Klasa umożliwiająca szyfrowanie haseł usera.
+     */
     PasswordEncrypter encrypter = new PasswordEncrypter();
 
+    /**
+     * flaga czy user jest zalogowany
+     */
 boolean IsLogin = true;
 
     @Override
@@ -35,11 +44,15 @@ boolean IsLogin = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("com.example.notatnikfinal", Context.MODE_PRIVATE);
 
         EditText emailEt = (EditText) findViewById(R.id.et_email_login);
         EditText passEt = (EditText) findViewById(R.id.edit_text_login_password);
 
+        /**
+         * Przycisk zaloguj
+         */
         Button goToLogin = (Button) findViewById(R.id.btn_goToLogin_login);
 
         goToLogin.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +97,9 @@ boolean IsLogin = true;
             }
             });
 
+        /**
+         * Przycisk przejścia do aktywności rejestracji
+         */
         Button goToRegistration = (Button) findViewById(R.id.btn_goToRegistration_login);
         goToRegistration.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -93,6 +109,10 @@ boolean IsLogin = true;
 
         });
 
+
+        /**
+         * Przycisk przejścia do aktywności ogłoszeń
+         */
 
         Button goToAddAnnouncement = (Button) findViewById(R.id.btn_goToAddAnnouncement_login);
         goToAddAnnouncement.setOnClickListener(new View.OnClickListener() {
@@ -138,6 +158,12 @@ boolean IsLogin = true;
         return true;
     }
 
+    /**
+     * Funkcja sprawdzająca czy podanej hasło jest zgodne z faktycznym hasłem w bazie danych.
+     * @param pass
+     * @param secret
+     * @return
+     */
     private boolean checkEqualPassword(String pass, String secret){
 
        String receivedSecret =  encrypter.Encrypt(pass);
